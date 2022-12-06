@@ -17,5 +17,5 @@ txt_target="DOMAIN.com."
 ### Use
 
 ```sh
-./apache2-ovh.sh "add|del" 'CNAME"
+./apache2-ovh.sh "add|del" "CNAME"
 ```
