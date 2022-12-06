@@ -9,7 +9,7 @@ OVH_APP_SECRET=$OVH_APP_SECRET
 OVH_CONSUMER_KEY=$OVH_CONSUMER_KEY
 
 HTTP_METHOD="POST"
-HTTP_QUERY="https://api.ovh.com/1.0/domain/zone/"$txt_domain"/record" #-------------------
+HTTP_QUERY="https://api.ovh.com/1.0/domain/zone/"$txt_domain"/record"
 txt_type="CNAME"
 txt_subdomain=$1
 HTTP_BODY={"\"fieldType\"":"\"$txt_type\"","\"subDomain\"":"\"$txt_subdomain\"","\"target\"":"\"$txt_target\""}
@@ -25,5 +25,3 @@ $HTTP_QUERY \
 -H "X-Ovh-Signature: $SIG" \
 -H "X-Ovh-Timestamp: $TIME" \
 --data "$HTTP_BODY"
-
-echo -e
