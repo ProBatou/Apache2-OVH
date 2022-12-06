@@ -14,9 +14,9 @@ rm /etc/apache2/sites-enabled/$1.conf
 
 rm /etc/apache2/sites-enabled/$1-le-ssl.conf
 
-certbot revoke --cert-name probatou.com --delete-after-revoke
+certbot revoke --cert-name $txt_domain --delete-after-revoke
 
-certbot certonly --standalone --preferred-challenges http -d probatou.com
+certbot certonly --standalone --preferred-challenges http -d $txt_domain
 
 certbot --reinstall --expand
 
