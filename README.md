@@ -13,3 +13,9 @@ OVH_APP_SECRET="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 txt_domain="DOMAIN.com"
 txt_target="DOMAIN.com."
 ```
+
+### Use
+
+```sh
+./apache2-ovh.sh "add|del" 'CNAME"
+```
