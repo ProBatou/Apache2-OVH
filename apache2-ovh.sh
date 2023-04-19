@@ -11,12 +11,14 @@ elif [[ -z $2 ]]; then
     exit
 else
     if [[ $1 == "add" ]]; then
-        $PWD/ovh_add.sh $1
+        $PWD/ovh_add.sh $2
+	$PWD/ovh_refresh.sh
         sed "s/subdomain/$2/ ; s/domain.ext/$txt_domain/" $PWD/template.conf > /etc/apache2/sites-enabled/$2.conf
-        certbot --reinstall --expand --test-cert
+        certbot --reinstall --expand
         nano /etc/apache2/sites-enabled/$2-le-ssl.conf
-    elif [[ $1 == "del" ]]; then
+    elif [[ $1 == "delete" ]]; then
         $PWD/ovh_delete.sh $2
+	$PWD/ovh_refresh.sh
         rm /etc/apache2/sites-enabled/$2.conf
         rm /etc/apache2/sites-enabled/$2-le-ssl.conf
         certbot revoke --cert-name $txt_domain --delete-after-revoke
