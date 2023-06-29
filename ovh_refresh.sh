@@ -5,9 +5,10 @@ source secret.conf
 OVH_APP_KEY=$OVH_APP_KEY
 OVH_APP_SECRET=$OVH_APP_SECRET
 OVH_CONSUMER_KEY=$OVH_CONSUMER_KEY
+txt_domain=$txt_domain
 
 HTTP_METHOD="POST"
-HTTP_QUERY="https://api.ovh.com/1.0/domain/zone/probatou.com/refresh"
+HTTP_QUERY="https://api.ovh.com/1.0/domain/zone/$txt_domain/refresh"
 TIME=$(curl -s https://api.ovh.com/1.0/auth/time)
 CLEAR_SIGN=$OVH_APP_SECRET"+"$OVH_CONSUMER_KEY"+"$HTTP_METHOD"+"$HTTP_QUERY"++"$TIME
 SIG='$1$'$(echo -n $CLEAR_SIGN | openssl dgst -sha1 -hex | cut -f 2 -d ' ' )
